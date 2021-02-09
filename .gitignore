@@ -2,6 +2,7 @@
 *.class
 
 # Log file
+~/maven_worksite/*.log
 *.log
 
 # BlueJ files

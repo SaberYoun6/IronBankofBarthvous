@@ -12,10 +12,10 @@ import com.Iron_Bank.service.AccountServices;
 public class AccountCreationMenu implements Menu {
 
 	private static Logger log = Logger.getLogger(AccountCreationMenu.class);
-	private AccountServices asrv = new AccountServices();
-	private MainMenu mm = new MainMenu();
 	@Override
 	public void display() {
+		MainMenu mm = new MainMenu();
+		AccountServices asrv = new AccountServices();
 		double debtSaving = 0.00;
 		int element=0;
 		double debtChecking = 0.00;
@@ -39,6 +39,7 @@ public class AccountCreationMenu implements Menu {
 			case 2:
 				int counter=0;
 				while(counter > 2 ) {
+					String accountype = sc.next();
 				log.info("adding money to your account");
 				try {
 					debtSaving = Double.parseDouble(sc.next());
@@ -48,15 +49,14 @@ public class AccountCreationMenu implements Menu {
 				}
 				
 				log.info(debtSaving);
-				log.info(debtChecking);
-				List<Double> num = new ArrayList<>();
+				Double num = 0.0;
 				try {
-					num = isnonNegative(debtSaving,debtChecking);
+					num = isnonNegative(debtSaving);
 				} catch (NegativeNumberException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				asrv.accountCreation(num.get(0), num.get(1));
+				asrv.accountCreation(accountype,num);
 				counter++;
 				} 
 				if (counter > 2 ){
@@ -72,16 +72,14 @@ public class AccountCreationMenu implements Menu {
 
 		} while (element != 1);
 	}
-	public List<Double> isnonNegative(double debtSaving, double debtChecking) throws NegativeNumberException{
-		ArrayList<Double> numbers = new ArrayList<>();
+	public Double isnonNegative(double debt) throws NegativeNumberException{
 		
-		if (debtSaving > 0 |debtChecking > 0) {
+		if (debt > 0) {
 			throw new NegativeNumberException();
 		}else {
-			numbers.add(debtSaving);
-			numbers.add(debtChecking);
+			;
 		}
-		return numbers;
+		return debt;
 		
 	}
 

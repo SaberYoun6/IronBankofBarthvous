@@ -9,7 +9,6 @@ import org.junit.jupiter.api.Test;
 import com.Iron_Bank.dao.UserDAO;
 import com.Iron_Bank.dao.UserDAOImpl;
 import com.Iron_Bank.model.UserPaU;
-import com.Iron_Bank.util.ConnectionUtil;
 
 class TestCase {
 

@@ -8,5 +8,5 @@ import com.Iron_Bank.model.AccountInfo;
 
 public interface AccountDAO {
 	public int creatAccountName(AccountInfo accountInfo,Connection connection) throws SQLException;
-	public AccountInfo lookupIdAccountTypesNames(String username);
+
 }

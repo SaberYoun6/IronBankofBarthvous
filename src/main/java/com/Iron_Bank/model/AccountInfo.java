@@ -2,59 +2,58 @@ package com.Iron_Bank.model;
 
 public class AccountInfo {
 	private int accountId;
-	private int transactionId;
-	private String savingNumberId;
-	private double debtSaving;
-	private String checkingNumberId;
-	private double debtChecking;
+	private String numberId;
+	private double debt;
+	private String accountType;
 
 	public AccountInfo() {
 		super();
 	}
+
 	public AccountInfo(int accountId) {
-		this.accountId=accountId;
+		this.accountId = accountId;
 	}
-	public AccountInfo(int accountId, String savingNumberId, String checkingNumberId) {
+
+	public AccountInfo(int accountId, String accountType, String numberId) {
 		this(accountId);
-		this.savingNumberId=savingNumberId;
-		this.checkingNumberId=checkingNumberId;
+		this.numberId = numberId;
 	}
-	public AccountInfo(int accountId,String savingNumberId, double debtSaving ,String checkingNumberId, double debtChecking) {
-			this(accountId,savingNumberId,checkingNumberId);
-		    this.debtSaving=debtSaving;
-			this.debtChecking=debtChecking;
+
+	public AccountInfo(int accountId,String accountType,String numberId, double debt) {
+			this(accountId,accountType,numberId);
+		    this.debt=debt;
 	}
-	
-	
+
 	public int getAccountId() {
 		return accountId;
 	}
+
 	public void setAccountId(int accountId) {
 		this.accountId = accountId;
 	}
-	public String getSavingNumberId() {
-		return savingNumberId;
+
+	public String getNumberId() {
+		return numberId;
 	}
-	public void setSavingNumberId(String savingNumberId) {
-		this.savingNumberId = savingNumberId;
+
+	public void setNumberId(String numberId) {
+		this.numberId = numberId;
 	}
-	public double getDebtSaving() {
-		return debtSaving;
+
+	public double getDebt() {
+		return debt;
 	}
-	public void setDebtSaving(double debtSaving) {
-		this.debtSaving = debtSaving;
+
+	public void setDebt(double debt) {
+		this.debt = debt;
 	}
-	public String getCheckingNumberId() {
-		return checkingNumberId;
+
+	public String getAccountType() {
+		return accountType;
 	}
-	public void setCheckingNumberId(String checkingNumberId) {
-		this.checkingNumberId = checkingNumberId;
+
+	public void setAccountType(String accountType) {
+		this.accountType = accountType;
 	}
-	public double getDebtChecking() {
-		return debtChecking;
-	}
-	public void setDebtChecking(double debtChecking) {
-		this.debtChecking = debtChecking;
-	}
-	
+
 }

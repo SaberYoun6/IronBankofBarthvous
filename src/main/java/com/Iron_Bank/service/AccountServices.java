@@ -25,12 +25,10 @@ public class AccountServices {
 		accountDAO = new AccountDAOImpl();
 	}
 
-	public int accountCreation(double debtSaving, double debtChecking) {
+	public int accountCreation(String accountType ,double debtSaving) {
 		int count = 0;
-		
 		String savingAccountId = AccountServices.checkingSavingsid();
-		String checkingAccountId = AccountServices.checkingSavingsid();
-		AccountInfo accounts = new AccountInfo(0, savingAccountId, debtSaving, checkingAccountId, debtChecking);
+		AccountInfo accounts = new AccountInfo(0, accountType,savingAccountId, debtSaving);
 
 		try (Connection connection = ConnectionUtil.getConnection()) {
 			connection.setAutoCommit(false);

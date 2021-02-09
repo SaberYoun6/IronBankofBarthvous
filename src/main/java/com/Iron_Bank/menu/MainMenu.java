@@ -33,6 +33,8 @@ public class MainMenu implements Menu {
 		ucm.display();
 		break;
 		case 3: log.info("You will be allowed to access that user account");
+		LoginMenu lm = new LoginMenu();
+		lm.display();
 		break;
 		case 4: log.info("Will allow you to access the employee ");
 		break;
