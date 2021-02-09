@@ -10,14 +10,15 @@ public class MainMenu implements Menu {
 
 	@Override
 	public void display() {
+		AccountCreationMenu acmu =new AccountCreationMenu();
 		int element=0;
 		do{
-		log.trace("Your option will be displayed below");
-		log.debug("");
-		log.trace("1.) Will exit the program");
-		log.trace("2). Will allow your to create a new user");
-		log.trace("3). Will allow you to login of a users account");
-		log.trace("4). Will allow you to login under any employee");
+		log.info("Your option will be displayed below");
+		log.info("");
+		log.info("1.) Will exit the program");
+		log.info("2). Will allow your to create a new user");
+		log.info("3). Will allow you to login of a users account");
+		log.info("4). Will allow you to login under any employee");
 		
 		try {
 		element=Integer.parseInt(sc.next());
@@ -25,24 +26,21 @@ public class MainMenu implements Menu {
 		}
 		log.trace(element);
 		switch(element){
-		case 1: log.trace("You are going to be exiting the program");
+		case 1: log.info("You are going to be exiting the program");
 		break;
-		case 2: log.trace("Creating a new user");
+		case 2: log.info("Creating a new user");
 		UserCreationMenu ucm = new UserCreationMenu();
 		ucm.display();
-		log.trace("Now allowing the user to create a Bank account");
-		AccountCreationMenu acm = new AccountCreationMenu();
-		acm.display();
 		break;
-		case 3: log.trace("You will be allowed to access that user account");
+		case 3: log.info("You will be allowed to access that user account");
 		break;
-		case 4: log.trace("Will allow you to access the employee ");
+		case 4: log.info("Will allow you to access the employee ");
 		break;
-		default : log.trace("There are no more option but the four above you can only enter 1-4");
+		default : log.info("There are no more option but the four above you can only enter 1-4");
 		}
 		
 		}while(element!=1);
-		log.trace("goodbye");
+		log.info("goodbye");
 		// TODO Auto-generated method stub
 
 	}

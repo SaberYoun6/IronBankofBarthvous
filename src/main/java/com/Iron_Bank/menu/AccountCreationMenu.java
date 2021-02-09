@@ -1,14 +1,12 @@
 package com.Iron_Bank.menu;
 
-import java.time.LocalDate;
-import java.time.Period;
-import java.time.format.DateTimeFormatter;
-import java.time.temporal.ChronoUnit;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.log4j.Logger;
 
-import com.Iron_Bank.model.AccountInfo;
-import com.Iron_Bank.model.User;
+import com.Iron_Bank.exception.NegativeNumberException;
 import com.Iron_Bank.service.AccountServices;
 
 public class AccountCreationMenu implements Menu {
@@ -39,41 +37,52 @@ public class AccountCreationMenu implements Menu {
 				log.info("booting you back to the menu without adding money to your newly created account");
 				mm.display();
 			case 2:
-				User user = new User();
-				String dateofbirth=user.getDob();
-				LocalDate dob = LocalDate.parse(dateofbirth,DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-				LocalDate  curr= LocalDate.now();
 				int counter=0;
-				if(counter > 2 ) {
+				while(counter > 2 ) {
 				log.info("adding money to your account");
 				try {
 					debtSaving = Double.parseDouble(sc.next());
-					if (ChronoUnit.YEARS.between(dob, curr) >= 18) {
 					debtChecking = Double.parseDouble(sc.next());
-					}
 				} catch (NumberFormatException e) {
 					log.trace("Your number is not a number but a letter", e);
 				}
+				
 				log.info(debtSaving);
-				if (ChronoUnit.YEARS.between(dob, curr) >= 18) {
 				log.info(debtChecking);
+				List<Double> num = new ArrayList<>();
+				try {
+					num = isnonNegative(debtSaving,debtChecking);
+				} catch (NegativeNumberException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
-				asrv.accountCreation(debtSaving, debtChecking);
+				asrv.accountCreation(num.get(0), num.get(1));
 				counter++;
-				}else {
+				} 
+				if (counter > 2 ){
 					return;
+				} else {
+					asrv.accountCreation(debtSaving, debtChecking);
+					break;
 				}
-				asrv.accountCreation(debtSaving, debtChecking);
-				break;
-			case 3: log.trace("");
+				
+				
+			case 3: log.info("Your id of the account based on the Username");
 			}
 
 		} while (element != 1);
-
 	}
-	private Period Period(LocalDate dob, LocalDate curr) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Double> isnonNegative(double debtSaving, double debtChecking) throws NegativeNumberException{
+		ArrayList<Double> numbers = new ArrayList<>();
+		
+		if (debtSaving > 0 |debtChecking > 0) {
+			throw new NegativeNumberException();
+		}else {
+			numbers.add(debtSaving);
+			numbers.add(debtChecking);
+		}
+		return numbers;
+		
 	}
 
 }

@@ -7,8 +7,8 @@ import java.sql.SQLException;
 
 import org.junit.jupiter.api.Test;
 
+import com.Iron_Bank.exception.UserNotFoundException;
 import com.Iron_Bank.service.UserService;
-import com.Iron_bank.exception.UserNotFoundException;
 
 
 class Testing {
@@ -46,7 +46,7 @@ class Testing {
 		assertFalse(uss.checkingUsernameLoginInfo("mAco"));
 	}
 	@Test
-	void createAFullUser() {
-		assertEquals("");
+	void checkingifAFullUserhasbeencreated() {
+		assertTrue(uss.checkingUsernameLoginInfo("mavericks"));
 	}
 }

@@ -3,7 +3,6 @@ package com.Iron_Bank.service;
 import com.Iron_Bank.model.User;
 import com.Iron_Bank.model.UserPaU;
 import com.Iron_Bank.util.ConnectionUtil;
-import com.Iron_bank.exception.UserNotFoundException;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -12,19 +11,22 @@ import org.apache.log4j.Logger;
 
 import com.Iron_Bank.dao.UserDAO;
 import com.Iron_Bank.dao.UserDAOImpl;
+import com.Iron_Bank.exception.UserNotFoundException;
 
 public class UserService {
 
 	private static Logger log = Logger.getLogger(UserService.class);
-	public UserDAO userDao;
+	public UserDAO userDao; 
+		
 
 	public UserService() {
 		super();
-		userDao = new UserDAOImpl();
+		userDao= new UserDAOImpl();
 	}
 
 	public int usernamesCreationandPasswordsService(String usersname, String password) {
 		int count = 0;
+		
 		
 		UserPaU user = new UserPaU(0, usersname, password);
 
@@ -43,7 +45,7 @@ public class UserService {
 		return count;
 
 	}
-
+	/*
 	public int usersInfoCreationService(String givenname, String surname, String email, String ssn, String dob,
 			String dateofcreation, String lastlogin) {
 		int count = 0;
@@ -58,7 +60,7 @@ public class UserService {
 
 		return count;
 	}
-
+	*/
 	@SuppressWarnings("unused")
 	public UserPaU userLoginInfo(String usersname) throws SQLException, UserNotFoundException {
 

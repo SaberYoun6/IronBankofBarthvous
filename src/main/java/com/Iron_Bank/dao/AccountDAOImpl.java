@@ -25,5 +25,10 @@ public class AccountDAOImpl implements AccountDAO {
 		 
 		return count;
 	}
+	@Override
+	public AccountInfo lookupIdAccountTypesNames(String username) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

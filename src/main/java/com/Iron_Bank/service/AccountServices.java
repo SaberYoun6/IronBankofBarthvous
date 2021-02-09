@@ -27,16 +27,10 @@ public class AccountServices {
 
 	public int accountCreation(double debtSaving, double debtChecking) {
 		int count = 0;
-		User user = new User();
-		String dateofbirth = user.getDob();
-		String checkingAccountId = null;
-		LocalDate dob = LocalDate.parse(dateofbirth, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-		LocalDate curr = LocalDate.now();
+		
 		String savingAccountId = AccountServices.checkingSavingsid();
-		if (ChronoUnit.YEARS.between(dob, curr) >= 18) {
-			checkingAccountId = AccountServices.checkingSavingsid();
-		}
-		AccountInfo accounts = new AccountInfo(0, 0, savingAccountId, debtSaving, checkingAccountId, debtChecking);
+		String checkingAccountId = AccountServices.checkingSavingsid();
+		AccountInfo accounts = new AccountInfo(0, savingAccountId, debtSaving, checkingAccountId, debtChecking);
 
 		try (Connection connection = ConnectionUtil.getConnection()) {
 			connection.setAutoCommit(false);

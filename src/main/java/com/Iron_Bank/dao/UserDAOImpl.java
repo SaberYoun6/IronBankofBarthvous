@@ -7,10 +7,10 @@ import java.sql.SQLException;
 
 import org.apache.log4j.Logger;
 
+import com.Iron_Bank.exception.DataBaseConnectionException;
 import com.Iron_Bank.model.User;
 import com.Iron_Bank.model.UserPaU;
 import com.Iron_Bank.util.ConnectionUtil;
-import com.Iron_bank.exception.DataBaseConnectionException;
 
 public class UserDAOImpl implements UserDAO {
 
@@ -18,12 +18,12 @@ public class UserDAOImpl implements UserDAO {
 	public UserDAOImpl() {
 		super();
 	}
-
+	/*
 	@Override
 	public int infoCreation(User users, Connection connection) throws SQLException {
 		int creationCOunt = 0;
 
-		String sql = "INSERT INTO iron_bank.UsersInfo(firstname,lastname,email,ssn,created_on,dob,last_login) VALUES (?,?,?,?,?,?,?)";
+		String sql = "INSERT INTO iron_bank.UsersInfo(firstname,lastname,email,ssn,dob,created_On,last_login) VALUES (?,?,?,?,?,?,?)";
 
 		PreparedStatement pstmt = connection.prepareStatement(sql);
 
@@ -41,7 +41,7 @@ public class UserDAOImpl implements UserDAO {
 		return null;
 		
 	}
-
+    */
 	@Override
 	public int usernameCreationandPasswords(UserPaU user, Connection connection) throws SQLException {
 		int creationCount = 0;

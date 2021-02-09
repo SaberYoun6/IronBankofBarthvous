@@ -14,18 +14,13 @@ public class AccountInfo {
 	public AccountInfo(int accountId) {
 		this.accountId=accountId;
 	}
-	
-	public AccountInfo(int accountId,int transactionId) {
+	public AccountInfo(int accountId, String savingNumberId, String checkingNumberId) {
 		this(accountId);
-		this.transactionId=transactionId;
-	}
-	public AccountInfo(int accountId,int transactionId, String savingNumberId, String checkingNumberId) {
-		this(accountId,transactionId);
 		this.savingNumberId=savingNumberId;
 		this.checkingNumberId=checkingNumberId;
 	}
-	public AccountInfo(int accountId,int transactionId,String savingNumberId, double debtSaving ,String checkingNumberId, double debtChecking) {
-			this(accountId,transactionId,savingNumberId,checkingNumberId);
+	public AccountInfo(int accountId,String savingNumberId, double debtSaving ,String checkingNumberId, double debtChecking) {
+			this(accountId,savingNumberId,checkingNumberId);
 		    this.debtSaving=debtSaving;
 			this.debtChecking=debtChecking;
 	}
@@ -36,12 +31,6 @@ public class AccountInfo {
 	}
 	public void setAccountId(int accountId) {
 		this.accountId = accountId;
-	}
-	public int getTransactionId() {
-		return transactionId;
-	}
-	public void setTransactionId(int transactionId) {
-		this.transactionId = transactionId;
 	}
 	public String getSavingNumberId() {
 		return savingNumberId;
