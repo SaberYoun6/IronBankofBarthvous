@@ -42,21 +42,17 @@ public class AccountCreationMenu implements Menu {
 					String accountype = sc.next();
 				log.info("adding money to your account");
 				try {
-					debtSaving = Double.parseDouble(sc.next());
-					debtChecking = Double.parseDouble(sc.next());
+					debt = Double.parseDouble(sc.next());
 				} catch (NumberFormatException e) {
 					log.trace("Your number is not a number but a letter", e);
-				}
-				
-				log.info(debtSaving);
-				Double num = 0.0;
-				try {
-					num = isnonNegative(debtSaving);
 				} catch (NegativeNumberException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				asrv.accountCreation(accountype,num);
+				
+				log.info(debtSaving);
+				Double num = 0.0;
+				asrv.accountCreation( ,accountype,debt);
 				counter++;
 				} 
 				if (counter > 2 ){

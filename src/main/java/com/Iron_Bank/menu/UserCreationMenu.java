@@ -29,12 +29,12 @@ public class UserCreationMenu implements Menu {
 			}
 			log.info("Here are you options for user creation menu");
 			log.info(" ");
-			log.info("1 ). will return you to the main Menu");
+			log.info("1 ). will return you to the main menu");
 			log.info("2 ). Will allow you to create a account");
 			
 			switch (element) {
 			case 1:
-				log.info(" You are going  back to mainmenu");
+				log.info(" You are going  back to main menu");
 				mm.display();
 			case 2:
 				log.info("Complete accounts creation");

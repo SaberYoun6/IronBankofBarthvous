@@ -18,7 +18,7 @@ public class MainMenu implements Menu {
 		log.info("1.) Will exit the program");
 		log.info("2). Will allow your to create a new user");
 		log.info("3). Will allow you to login of a users account");
-		log.info("4). Will allow you to login under any employee");
+		log.trace("4). Will allow you to login under any employee");
 		
 		try {
 		element=Integer.parseInt(sc.next());

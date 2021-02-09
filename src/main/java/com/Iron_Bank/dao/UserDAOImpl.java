@@ -46,7 +46,7 @@ public class UserDAOImpl implements UserDAO {
 	public int usernameCreationandPasswords(UserPaU user, Connection connection) throws SQLException {
 		int creationCount = 0;
 
-		String sql = "Insert into iron_bank.accountPaU(usersnames,userspassword) values (?,?)";
+		String sql = "INSERT INTO iron_bank.userpasswordandusername(username, passwords) VALUES (?,?)";
 
 		PreparedStatement pstmt = connection.prepareStatement(sql);
 

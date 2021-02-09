@@ -11,11 +11,11 @@ import com.Iron_Bank.dao.UserDAOImpl;
 import com.Iron_Bank.model.UserPaU;
 
 class TestCase {
-
+	/*
 	@Test
 	void test() {
 		fail("Not yet implemented");
-	}
+	}*/
 	@Test
 	void isDAOConnectionreachedforLogin() {
 		UserDAO userDao = new UserDAOImpl();
