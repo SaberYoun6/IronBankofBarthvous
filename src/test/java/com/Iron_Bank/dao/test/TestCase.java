@@ -13,6 +13,8 @@ import com.Iron_Bank.dao.UserDAOImpl;
 import com.Iron_Bank.model.UserPaU;
 
 class TestCase {
+	public AccountDAO accDao = new AccountDAOImpl();
+	public UserDAO userDao = new UserDAOImpl();
 	/*
 	@Test
 	void test() {
@@ -42,7 +44,11 @@ class TestCase {
 	}
 	@Test
 	void isaccountinformatio() {
-		AccountDAO accDao = new AccountDAOImpl();
+		
 		assertNull(accDao.getAccountInfoById(1));
+	}
+	@Test 
+	void isaccountinfomrationaccurate(){
+		Account
 	}
 }

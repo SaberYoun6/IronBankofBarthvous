@@ -13,16 +13,17 @@ import org.apache.log4j.Logger;
 
 import com.Iron_Bank.dao.AccountDAO;
 import com.Iron_Bank.dao.AccountDAOImpl;
+import com.Iron_Bank.exception.AccountNotFoundException;
 import com.Iron_Bank.model.AccountInfo;
 import com.Iron_Bank.model.User;
 import com.Iron_Bank.util.ConnectionUtil;
 
 public class AccountServices {
 	private static Logger log = Logger.getLogger(AccountServices.class);
-	public AccountDAO accountDAO;
+	public AccountDAO accountDao;
 
 	public AccountServices() {
-		accountDAO = new AccountDAOImpl();
+		accountDao = new AccountDAOImpl();
 	}
 
 	public int accountCreation(int account_user_id, String accountType ,double debtSaving) {
@@ -33,7 +34,7 @@ public class AccountServices {
 		try (Connection connection = ConnectionUtil.getConnection()) {
 			connection.setAutoCommit(false);
 
-			count = accountDAO.creatAccountName(accounts, connection);
+			count = accountDao.createAccountInformation(accounts, connection);
 
 			connection.commit();
 
@@ -62,8 +63,18 @@ public class AccountServices {
 		return combine;
 	}
 
-	public String lookUpSavingCheckingid() {
-		return null;
+	@SuppressWarnings("unused")
+	public AccountInfo getAccInfoFromId(int id) throws AccountNotFoundException {
+	
+		AccountInfo accInfo = new AccountDAOImpl().getAccountInfoById(id);
+		log.trace(accInfo.getAccountType());
+		log.trace(accInfo.getAccountNumberId());
+		log.trace(accInfo.getDebt());
+		if (accInfo != null) { 
+		return accInfo;
+		} else
+			throw new AccountNotFoundException("incorrect id" +id +"!");
+		
 
 	}
 }
