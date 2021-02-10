@@ -7,6 +7,7 @@ import com.Iron_Bank.model.AccountInfo;
 
 
 public interface AccountDAO {
-	public int creatAccountName(AccountInfo accountInfo,Connection connection) throws SQLException;
+	public int creatAccountInformation(AccountInfo accountInfo,Connection connection) throws SQLException;
+	public AccountInfo getAccountInfoById(int accountNumberId);
 
 }

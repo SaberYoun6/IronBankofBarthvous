@@ -56,16 +56,16 @@ public class UserService {
 	 * return count; }
 	 */
 
-	public UserPaU userLoginInfo(String usersname) throws SQLException, UserNotFoundException {
+	@SuppressWarnings("unused")
+	public UserPaU userLoginInfo(String usersname) throws UserNotFoundException{
 
 		UserPaU useru = userDao.loginUser(usersname);
 		log.trace(useru.getUsersname());
 		log.trace(useru.getPassword());
 		if (useru != null) {
 			return useru;
-		} else {
-			throw new UserNotFoundException("Couldn't find your " + usersname);
-		}
+		} else
+			throw new UserNotFoundException("A User was not found your "+ usersname+"with that name" );
 	}
 
 	public boolean checkingUsernameLoginInfo(String username) {
@@ -74,7 +74,7 @@ public class UserService {
 		try {
 			user = uservice.userLoginInfo(username);
 
-		} catch (SQLException | UserNotFoundException e) {
+		} catch ( UserNotFoundException e) {
 			// TODO Auto-generated catch block
 			return e.getMessage() != null;
 		}
@@ -91,8 +91,8 @@ public class UserService {
 		UserPaU user = null;
 		try {
 			user = uss.userLoginInfo(username);
-		} catch (SQLException | UserNotFoundException e) {
-			e.printStackTrace();
+		} catch ( UserNotFoundException e) {
+			return e.getMessage() != null;
 
 		}
 		if (user.getUsersname().equals(username) & user.getPassword().equals(password)) {
@@ -109,8 +109,8 @@ public class UserService {
 		try {
 			user = uss.userLoginInfo(username);
 
-		} catch (SQLException | UserNotFoundException e) {
-			log.trace(e);
+		} catch ( UserNotFoundException e) {
+			e.printStackTrace();
 		}
 		return user.getUsers_id();
 	}

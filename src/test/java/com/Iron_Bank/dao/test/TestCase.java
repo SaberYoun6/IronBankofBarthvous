@@ -6,6 +6,8 @@ import java.sql.SQLException;
 
 import org.junit.jupiter.api.Test;
 
+import com.Iron_Bank.dao.AccountDAO;
+import com.Iron_Bank.dao.AccountDAOImpl;
 import com.Iron_Bank.dao.UserDAO;
 import com.Iron_Bank.dao.UserDAOImpl;
 import com.Iron_Bank.model.UserPaU;
@@ -37,5 +39,10 @@ class TestCase {
 	void isDAOusernametoid() {
 		UserDAO userDao = new UserDAOImpl();
 		assertEquals(userDao.loginUser("Karatekind").getUsers_id(),1);
+	}
+	@Test
+	void isaccountinformatio() {
+		AccountDAO accDao = new AccountDAOImpl();
+		assertNull(accDao.getAccountInfoById(1));
 	}
 }

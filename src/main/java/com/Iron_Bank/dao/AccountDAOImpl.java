@@ -10,12 +10,12 @@ public class AccountDAOImpl implements AccountDAO {
 		super();
 	}
 	@Override
-	public int creatAccountName(AccountInfo accountInfo, Connection connection) throws SQLException {
+	public int creatAccountInformation(AccountInfo accountInfo, Connection connection) throws SQLException {
 		 int count =0;
 		 
-		 String sql = "insert into iron_bank.basicaccountinfo(user_account_id, account_types, number_id, debt) values (?,?,?,?)";
+		 String sql = "insert into iron_bank.accounts_info(user_account_id,account_type,account_number_id,debt) values (?,?,?,?)";
 		 PreparedStatement pstmt = connection.prepareStatement(sql);
-		 pstmt.setString(1, sql);
+		 pstmt.setInt(1, accountInfo.getAccountNumberId());
 		 pstmt.setString(2, accountInfo.getAccountType());
 		 pstmt.setString(3, accountInfo.getNumberId());
 		 pstmt.setDouble(4, accountInfo.getDebt());
@@ -23,6 +23,11 @@ public class AccountDAOImpl implements AccountDAO {
 		 count = pstmt.executeUpdate();
 		 
 		return count;
+	}
+	@Override
+	public AccountInfo getAccountInfoById(int accountNumberId) {
+		return null;
+		
 	}
 	
 
