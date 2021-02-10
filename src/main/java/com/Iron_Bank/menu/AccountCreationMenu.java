@@ -7,6 +7,7 @@ import java.util.List;
 import org.apache.log4j.Logger;
 
 import com.Iron_Bank.exception.NegativeNumberException;
+import com.Iron_Bank.model.UserPaU;
 import com.Iron_Bank.service.AccountServices;
 
 public class AccountCreationMenu implements Menu {
@@ -15,10 +16,10 @@ public class AccountCreationMenu implements Menu {
 	@Override
 	public void display() {
 		MainMenu mm = new MainMenu();
+		UserPaU users = new UserPaU();
 		AccountServices asrv = new AccountServices();
-		double debtSaving = 0.00;
+		double debt = 0.00;
 		int element=0;
-		double debtChecking = 0.00;
 		try {
 			element= Integer.parseInt(sc.next());
 		}catch(NumberFormatException e) {
@@ -39,6 +40,7 @@ public class AccountCreationMenu implements Menu {
 			case 2:
 				int counter=0;
 				while(counter > 2 ) {
+					users.getUsers_id();
 					String accountype = sc.next();
 				log.info("adding money to your account");
 				try {

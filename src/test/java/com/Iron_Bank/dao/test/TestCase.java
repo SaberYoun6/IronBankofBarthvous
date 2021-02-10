@@ -19,18 +19,23 @@ class TestCase {
 	@Test
 	void isDAOConnectionreachedforLogin() {
 		UserDAO userDao = new UserDAOImpl();
-		assert((userDao.loginUser("fritzsimson") != null));
+		assert((userDao.loginUser("Karatekind").getUsersname() != null));
 		
 	}
 	@Test
 	void isDAOConnectionreachedforLoginAndAreTheseUserSimilar() {
 		UserDAO userDao = new UserDAOImpl();
-		assertEquals(userDao.loginUser("fritzsimson").getPassword(),"P@ssw0rd");
+		assertEquals(userDao.loginUser("Karatekind").getPassword(),"Pet$wip3s");
 	}
 	@Test
 	void isDAOConnectionbeingReachedforCreationinganewUserandPassword() throws SQLException {
 		UserDAO userDao = new UserDAOImpl();
-		UserPaU userpau = new UserPaU("Marco","Machines");
-		assertEquals(userDao.loginUser("Marco").getUsersname() ,userpau.getUsersname());
+		UserPaU users = new UserPaU("Karatekind","Pet$wip3s");
+		assertEquals(userDao.loginUser("Karatekind").getUsersname() ,users.getUsersname());
+	}
+	@Test
+	void isDAOusernametoid() {
+		UserDAO userDao = new UserDAOImpl();
+		assertEquals(userDao.loginUser("Karatekind").getUsers_id(),1);
 	}
 }

@@ -8,8 +8,10 @@ import java.sql.SQLException;
 import org.apache.log4j.Logger;
 
 import com.Iron_Bank.exception.DataBaseConnectionException;
+import com.Iron_Bank.exception.UserNotFoundException;
 import com.Iron_Bank.model.User;
 import com.Iron_Bank.model.UserPaU;
+import com.Iron_Bank.service.UserService;
 import com.Iron_Bank.util.ConnectionUtil;
 
 public class UserDAOImpl implements UserDAO {
@@ -43,11 +45,10 @@ public class UserDAOImpl implements UserDAO {
 	}
     */
 	@Override
-	public int usernameCreationandPasswords(UserPaU user, Connection connection) throws SQLException {
+	public int usernameCreationandPasswords(UserPaU user, Connection connection) throws SQLException  {
 		int creationCount = 0;
 
-		String sql = "INSERT INTO iron_bank.userpasswordandusername(username, passwords) VALUES (?,?)";
-
+		String sql = "INSERT INTO iron_bank.users_p_a_u(usern, passw) values (?,?)"; 
 		PreparedStatement pstmt = connection.prepareStatement(sql);
 
 		pstmt.setString(1, user.getUsersname());
@@ -55,16 +56,17 @@ public class UserDAOImpl implements UserDAO {
 		pstmt.setString(2, user.getPassword());
 
 		creationCount = pstmt.executeUpdate();
+		
 
 		return creationCount;
 	}
 	@Override
 	public UserPaU loginUser(String username){
-		UserPaU userd =  null ;
+		UserPaU userd =  null;
 		try (Connection connection = ConnectionUtil.getConnection()) {
 			log.trace(connection);
-			String sql = "SELECT userspassword , usersnames  from iron_bank.accountPaU where usersnames = (?)";
-
+			String sql = "select * from iron_bank.users_p_a_u where usern = (?)";
+			
 			PreparedStatement pstmt = connection.prepareStatement(sql);
 			log.trace(pstmt);
 			
@@ -73,17 +75,20 @@ public class UserDAOImpl implements UserDAO {
 			ResultSet rs = pstmt.executeQuery();
 
 			if (rs.next()) {
-				String usernames = rs.getString("usersnames");
-				String password = rs.getString("userspassword");
-				userd = new UserPaU(usernames, password);
+				String usernames = rs.getString("usern");
+				String password = rs.getString("passw");
+				int user_id =rs.getInt("user_id");
+				userd = new UserPaU(user_id,usernames, password);
 				log.trace(userd);
 				log.trace(usernames);
 				log.trace(password);
 			} 
-			}catch (  SQLException  e) {
+			}catch ( SQLException  e) {
 				log.trace(e);
 			}
 			return userd;
 		}
-
+	
+		
+		
 }

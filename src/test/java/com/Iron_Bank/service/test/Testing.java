@@ -16,37 +16,29 @@ class Testing {
 	public UserService uss = new UserService();
 	//previous had created a user now checking if I can obtain that infromation
 	@Test
-	void isCreationOfAUserfound() {
-		try {
-			assertEquals(uss.userLoginInfo("Maco").getUsersname(),"Maco");
-		} catch (SQLException | UserNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	void isIdOfAUsersfound() {
+		assertEquals(uss.getUserId("Karatekind"),1);
 	}
 	@Test
 	void  canIRecievePasswordTokenfromUserLoginInfo() throws SQLException, UserNotFoundException {
-		assert(uss.userLoginInfo("Marco").getPassword() != null);
+		assert(uss.userLoginInfo("Karatekind").getPassword() != null);
 	}
 	@Test 
 	void canIVerifyLogininfo() {
-		assertTrue(uss.checkingpasswordLoginInfo("Maco", "Machin3"));
+		assertTrue(uss.checkingpasswordLoginInfo("Karatekind", "Pet$wip3s"));
 		
 	}
 	@Test
 	void mistypedpassword() {
-		assertFalse(uss.checkingpasswordLoginInfo("Maco", "Machin3)"));
+		assertFalse(uss.checkingpasswordLoginInfo("Karatekind", "Machin3)"));
 	}
 	@Test
 	void isretriveingUsenameworking() {
-		assertTrue(uss.checkingUsernameLoginInfo("Maco"));
+		assertTrue(uss.checkingUsernameLoginInfo("Karatekind"));
 	}
 	@Test
-	void ifUsernameismistype() {
+	void ifUsernameisMistype() {
 		assertFalse(uss.checkingUsernameLoginInfo("mAco"));
 	}
-	@Test
-	void checkingifAFullUserhasbeencreated() {
-		assertTrue(uss.checkingUsernameLoginInfo("mavericks"));
-	}
+	
 }
