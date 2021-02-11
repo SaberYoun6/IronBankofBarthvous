@@ -19,6 +19,12 @@ public class AccountsMenu implements Menu {
 			log.info("1 ). It will dump you back at MainMenu ");
 			log.info("2 ).It will put you back at the login screen");
 			log.info("3 ). It will allow you create an account");
+			log.info("4). It will allow you access to the majority of options in accounts features");
+			try {
+			element= Integer.parseInt(sc.next());
+			}catch(NumberFormatException e) {
+				log.error(e);
+			}
 			switch (element) {
 
 			case 1:
